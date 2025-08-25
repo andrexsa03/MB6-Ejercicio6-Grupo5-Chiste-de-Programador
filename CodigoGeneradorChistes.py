@@ -1,5 +1,6 @@
 import random
 
+# Base de chistes
 chistes = [
     ("¿Por qué los programadores confunden Halloween con Navidad?", "Porque OCT 31 = DEC 25"),
     ("¿Qué le dijo un bit al otro?", "Nos vemos en el bus."),
@@ -13,16 +14,27 @@ chistes = [
     ("¿Por qué el programador se fue a la playa?", "Porque necesitaba un poco de *refresh*."),
 ]
 
-random.shuffle(chistes)
+def obtener_chiste():
+    """Devuelve un chiste aleatorio (setup, punchline)."""
+    return random.choice(chistes)
 
 def mostrar_chistes():
-    for setup, punchline in chistes:
-        print("\n Chiste de Programadores")
-        print(setup)
-        input("Presiona ENTER para ver la respuesta...")
-        print(punchline)
-        opcion = input("\n¿Quieres otro chiste? (s/n): ").strip().lower()
+    vistos = 0
+    print("🤣 Bienvenido al generador de Chistes de Programadores 🤓\n")
+
+    while True:
+        setup, punchline = obtener_chiste()
+        print("💻 Chiste de Programadores")
+        print(f"👉 {setup}")
+        input("🔎 Presiona ENTER para ver la respuesta...")
+        print(f"😂 {punchline}\n")
+        
+        vistos += 1
+        opcion = input("¿Quieres otro chiste? (s/n): ").strip().lower()
         if opcion != "s":
-            print("\n¡Hasta la próxima! ")
+            print(f"\nMostraste {vistos} chiste(s). ¡Hasta la próxima! 👋")
             break
-mostrar_chistes()
+
+# Ejecutar
+if __name__ == "__main__":
+    mostrar_chistes()
